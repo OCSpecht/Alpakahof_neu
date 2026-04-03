@@ -67,16 +67,34 @@
     .about-image { border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
     .about-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .about-image:hover img { transform: scale(1.04); }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
     .stat { background: var(--cream); border-radius: 4px; padding: 1.2rem 1.5rem; border-left: 3px solid var(--green); }
     .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--green); font-weight: 700; line-height: 1; }
     .stat-label { font-size: 0.85rem; color: var(--text-light); margin-top: 0.3rem; }
 
+    /* IMAGE SLIDER */
+    .slider-section { padding: 2.5rem 0 4rem; background: var(--white); }
+    .slider-outer { position: relative; padding: 0 2.5rem; }
+    .slider-viewport { overflow: hidden; cursor: grab; }
+    .slider-viewport:active { cursor: grabbing; }
+    .slider-track { display: flex; gap: 6px; transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; align-items: flex-start; }
+    .slider-slide { flex: 0 0 calc(20% - 5px); overflow: hidden; aspect-ratio: 4/3; align-self: flex-start; }
+    .slider-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.95); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 14px rgba(0,0,0,0.18); transition: background 0.2s, transform 0.2s; }
+    .slider-btn:hover { background: var(--white); transform: translateY(-50%) scale(1.08); }
+    .slider-btn svg { width: 20px; stroke: var(--green); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
+    .slider-dots { display: flex; justify-content: center; gap: 7px; margin-top: 1.2rem; }
+    .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--beige); border: none; cursor: pointer; padding: 0; transition: background 0.3s, transform 0.2s; }
+    .slider-dot.active { background: var(--green); transform: scale(1.25); }
+    .slider-counter { font-size: 0.82rem; color: var(--text-light); font-family: 'Lato', sans-serif; letter-spacing: 0.05em; }
+    @media (max-width: 768px) {
+      .slider-slide { flex: 0 0 calc((100% - 6px) / 2); }
+      .slider-outer { padding: 0 2rem; }
+    }
+
     /* GALLERY STRIP */
-    .gallery-strip { display: grid; grid-template-columns: repeat(5, 1fr); height: 280px; overflow: hidden; }
-    .gallery-strip-item { overflow: hidden; }
-    .gallery-strip-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .gallery-strip-item:hover img { transform: scale(1.1); }
 
     /* WANDERUNGEN */
     #wanderungen { background: var(--cream); }
@@ -154,8 +172,6 @@
       .cards-grid { grid-template-columns: 1fr; max-width: 100%; }
       .news-grid { grid-template-columns: 1fr; }
       .kontakt-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .gallery-strip { grid-template-columns: repeat(3, 1fr); height: 200px; }
-      .gallery-strip-item:nth-child(n+4) { display: none; }
       .form-row { grid-template-columns: 1fr; }
       .about-stats { grid-template-columns: 1fr 1fr; }
     }
@@ -237,13 +253,94 @@
   </div>
 </section>
 
-<!-- GALERIE-STRIP -->
-<div class="gallery-strip">
-  <div class="gallery-strip-item"><img src="images/gallery-1.jpg" alt="Alpakas"></div>
-  <div class="gallery-strip-item"><img src="images/gallery-2.jpg" alt="Hof"></div>
-  <div class="gallery-strip-item"><img src="images/gallery-3.jpg" alt="Alpakas"></div>
-  <div class="gallery-strip-item"><img src="images/gallery-4.jpg" alt="Wanderung"></div>
-  <div class="gallery-strip-item"><img src="images/gallery-5.jpg" alt="Natur"></div>
+<!-- BILD-SLIDER -->
+<div class="slider-section">
+  <div class="slider-outer">
+    <button class="slider-btn prev" id="sliderPrev" aria-label="Vorheriges Bild">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="slider-viewport" id="sliderViewport">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slider-slide"><img src="images/gallery/DSC01376.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02247_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00299.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00285.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8937.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-2.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9445.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2736.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_0235.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01349.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-3.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8795.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02213_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7660.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02183_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_6524.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7500.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9958.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01388.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01463.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2516-1536x1152.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7486.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00272.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8494.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-1.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7317.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01481.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8805.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01504.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01356.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02227_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01468.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_6161.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01486.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00280.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00282.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2732.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9897.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00307_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_5770-768x1365.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01464.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02152_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7517.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00315.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/010673d5-05d3-4dce-89ec-3b603faa316a.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/photo-2025.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02250_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-1.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9521.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02150_edit2.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02237_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2929.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2726.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_5374-1024x576.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00327.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-3.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DJI_20250822155807_0004_D.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02251_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02218_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-5.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-6.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-5.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-4.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00279.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7579-1152x2048.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00318.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00353.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01373.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02178_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02217_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02241_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00275.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00368.JPG" alt="Rancho Cascada" loading="lazy"></div>
+      </div>
+    </div>
+    <button class="slider-btn next" id="sliderNext" aria-label="Nächstes Bild">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="slider-dots" id="sliderDots"></div>
 </div>
 
 <!-- WANDERUNGEN -->
@@ -254,7 +351,7 @@
     <p class="lead">Südamerika vor der Haustür – erleben Sie unvergessliche Stunden mit unseren Lamas und Alpakas. Nur nach vorheriger telefonischer Anmeldung.</p>
     <div class="cards-grid">
       <div class="card">
-        <div class="card-image"><img src="images/tour-1.jpg" alt="Lamawanderung"></div>
+        <div class="card-image"><img src="images/wanderung.JPG" alt="Lamawanderung"></div>
         <div class="card-body">
           <p class="card-tag">Total im Trend</p>
           <h3>Lamawanderung</h3>
@@ -272,7 +369,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-image"><img src="images/tour-2.jpg" alt="Patenschaft"></div>
+        <div class="card-image"><img src="images/patenschaft.jpg" alt="Patenschaft"></div>
         <div class="card-body">
           <p class="card-tag">Besonders</p>
           <h3>Patenschaft</h3>
@@ -339,18 +436,18 @@
         <div class="kontakt-info">
           <div class="kontakt-item">
             <div class="kontakt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-            <div class="kontakt-item-text"><strong>Adresse</strong>Rancho Cascada<br>Beethovenstraße 17<br>15345 Altlandsberg<br><span style="opacity:0.7;font-size:0.88rem;">Durch das Tor und bis zum Ende durchlaufen</span></div>
+            <div class="kontakt-item-text"><strong>Adresse</strong><a href="https://www.google.com/maps/search/?api=1&query=Beethovenstra%C3%9Fe+17%2C+15345+Altlandsberg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Rancho Cascada<br>Beethovenstraße 17<br>15345 Altlandsberg</a><br><span style="opacity:0.7;font-size:0.88rem;">Durch das Tor und bis zum Ende durchlaufen</span></div>
           </div>
           <div class="kontakt-item">
             <div class="kontakt-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
             <div class="kontakt-item-text"><strong>Marion Specht</strong><a href="tel:+4915170870534">+49 151 / 708 705 34</a><br><span style="opacity:0.7;font-size:0.88rem;">Mo–Sa, 19:00–20:30 Uhr</span></div>
           </div>
           <div class="kontakt-item">
-            <div class="kontakt-icon"><svg viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
+            <div class="kontakt-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 4 2.5 4 6v9.5C4 17.43 5.57 19 7.5 19L6 20.5V21h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zm0 2c3.07 0 5.5.46 5.94 1H6.06C6.5 4.46 8.93 4 12 4zM6 7h12v5H6V7zm1.5 9a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm9 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg></div>
             <div class="kontakt-item-text"><strong>Mit dem ÖPNV</strong>Nur 60 Minuten vom Alexanderplatz<br><span style="opacity:0.7;font-size:0.88rem;">S5 Richtung Strausberg (Nord) bis Haltestelle Hoppegarten, dann Bus 944</span></div>
           </div>
           <div class="kontakt-item">
-            <div class="kontakt-icon"><svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
+            <div class="kontakt-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h4c2.21 0 4 1.79 4 4s-1.79 4-4 4zm0-6v4h1c1.1 0 2-.9 2-2s-.9-2-2-2h-1z"/></svg></div>
             <div class="kontakt-item-text"><strong>Wichtiger Hinweis zum Parken</strong><span style="opacity:0.85;font-size:0.88rem;">Bitte in der Beethovenstraße oder der Bahnhofstraße parken – nicht in der Straße „am Fließ" (Sackgasse, Knöllchengefahr). Nicht in der Sackgasse wenden.</span></div>
           </div>
         </div>
@@ -391,6 +488,98 @@
 </footer>
 
 <script>
+  // ── IMAGE SLIDER ──────────────────────────────────────────────
+  (function() {
+    var track     = document.getElementById('sliderTrack');
+    var viewport  = document.getElementById('sliderViewport');
+    var dotsWrap  = document.getElementById('sliderDots');
+    if (!track) return;
+
+    var slides      = track.querySelectorAll('.slider-slide');
+    var total       = slides.length;
+    var current     = 0;
+    var autoTimer   = null;
+    var perView     = window.innerWidth <= 768 ? 2 : 5;
+    var maxIndex    = total - perView;
+
+    // Build dots only for small galleries; for large ones show counter
+    if (total <= 15) {
+      for (var i = 0; i <= maxIndex; i++) {
+        var d = document.createElement('button');
+        d.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Bild ' + (i + 1));
+        (function(idx) { d.addEventListener('click', function() { goTo(idx); }); })(i);
+        dotsWrap.appendChild(d);
+      }
+    } else {
+      var counter = document.createElement('span');
+      counter.id = 'sliderCounter';
+      counter.className = 'slider-counter';
+      counter.textContent = '1 / ' + total;
+      dotsWrap.appendChild(counter);
+    }
+
+    function getSlideWidth() {
+      return slides[0].offsetWidth + 6; // width + gap(6px)
+    }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(idx, maxIndex));
+      track.style.transform = 'translateX(-' + (current * getSlideWidth()) + 'px)';
+      dotsWrap.querySelectorAll('.slider-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === current);
+      });
+      var ctr = document.getElementById('sliderCounter');
+      if (ctr) ctr.textContent = (current + 1) + ' / ' + total;
+    }
+
+    document.getElementById('sliderPrev').addEventListener('click', function() {
+      goTo(current > 0 ? current - 1 : maxIndex);
+      resetAuto();
+    });
+    document.getElementById('sliderNext').addEventListener('click', function() {
+      goTo(current < maxIndex ? current + 1 : 0);
+      resetAuto();
+    });
+
+    function startAuto() {
+      autoTimer = setInterval(function() {
+        goTo(current < maxIndex ? current + 1 : 0);
+      }, 4000);
+    }
+    function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+    // Pause on hover
+    viewport.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
+    viewport.addEventListener('mouseleave', startAuto);
+
+    // Touch / drag support
+    var dragStartX = 0, isDragging = false;
+    viewport.addEventListener('mousedown',  function(e) { isDragging = true; dragStartX = e.clientX; });
+    viewport.addEventListener('mousemove',  function(e) { if (!isDragging) return; e.preventDefault(); });
+    viewport.addEventListener('mouseup',    function(e) { if (!isDragging) return; isDragging = false; handleSwipe(dragStartX - e.clientX); });
+    viewport.addEventListener('mouseleave', function()  { isDragging = false; });
+    viewport.addEventListener('touchstart', function(e) { dragStartX = e.touches[0].clientX; }, { passive: true });
+    viewport.addEventListener('touchend',   function(e) { handleSwipe(dragStartX - e.changedTouches[0].clientX); });
+
+    function handleSwipe(delta) {
+      if (Math.abs(delta) < 40) return;
+      delta > 0 ? goTo(current < maxIndex ? current + 1 : 0) : goTo(current > 0 ? current - 1 : maxIndex);
+      resetAuto();
+    }
+
+    // Recalc on resize
+    window.addEventListener('resize', function() {
+      perView  = window.innerWidth <= 768 ? 2 : 5;
+      maxIndex = total - perView;
+      if (current > maxIndex) current = maxIndex;
+      goTo(current);
+    });
+
+    startAuto();
+  })();
+  // ─────────────────────────────────────────────────────────────
+
   // Sticky nav shadow on scroll
   window.addEventListener('scroll', function() {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
