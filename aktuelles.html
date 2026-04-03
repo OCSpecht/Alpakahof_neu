@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktuelles vom Hof – Rancho Cascada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Facebook SDK -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v19.0"></script>
+  <style>
+    :root {
+      --green: #2D5016; --green-light: #4a7a28; --brown: #8B4513;
+      --cream: #FAF7F2; --beige: #E8DDD0; --text: #2C2C2C;
+      --text-light: #6B6B6B; --white: #ffffff;
+      --fb-blue: #1877F2;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--cream); font-size: 16px; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--beige); padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 0.5rem 1.2rem !important; border-radius: 4px; border-bottom: none !important; }
+    .nav-cta:hover { background: var(--green-light) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header { margin-top: 72px; background: var(--green); color: var(--white); padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover no-repeat; opacity: 0.12; }
+    .page-header-content { position: relative; max-width: 900px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .page-header .label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+    .page-header p { opacity: 0.8; margin-top: 0.5rem; max-width: 500px; }
+    .fb-follow-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.4rem; background: var(--fb-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; transition: background 0.2s; flex-shrink: 0; }
+    .fb-follow-btn:hover { background: #1558c0; }
+    .fb-follow-btn svg { width: 18px; fill: white; }
+
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--white); border-bottom: 1px solid var(--beige); padding: 0.8rem 2rem; font-size: 0.85rem; color: var(--text-light); }
+    .breadcrumb a { color: var(--green); text-decoration: none; font-weight: 700; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    /* FEED LAYOUT */
+    .feed-wrapper { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 6rem; display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; }
+
+    /* MAIN FEED */
+    .feed-main h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--green); margin-bottom: 1.5rem; }
+
+    /* Facebook widget container */
+    .fb-feed-wrap { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+
+    /* SIDEBAR */
+    .feed-sidebar { position: sticky; top: 92px; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .sidebar-card { background: var(--white); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+    .sidebar-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--green); margin-bottom: 0.8rem; }
+    .sidebar-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem; }
+    .sidebar-card .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown); font-weight: 700; margin-bottom: 0.4rem; }
+
+    .btn-green { display: block; text-align: center; padding: 0.75rem 1rem; background: var(--green); color: var(--white); text-decoration: none; border-radius: 4px; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s; }
+    .btn-green:hover { background: var(--green-light); }
+
+    .quick-info { display: flex; flex-direction: column; gap: 0.7rem; }
+    .quick-info-item { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.88rem; }
+    .quick-info-item svg { width: 16px; fill: var(--green); flex-shrink: 0; margin-top: 2px; }
+
+    /* Loading state placeholder */
+    .fb-loading-hint { text-align: center; padding: 3rem 2rem; color: var(--text-light); font-size: 0.9rem; }
+    .fb-loading-hint a { color: var(--fb-blue); font-weight: 700; text-decoration: none; }
+
+    /* FOOTER */
+    footer { background: #1a2e0a; color: rgba(255,255,255,0.55); text-align: center; padding: 2.5rem 2rem; font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    footer a:hover { color: #ffffff; }
+    .footer-links { margin-bottom: 0.8rem; display: flex; gap: 2rem; justify-content: center; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); flex-direction: column; gap: 0; border-bottom: 1px solid var(--beige); }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-top: 1px solid var(--beige); }
+      .nav-links a { display: block; padding: 1rem 1.5rem; border-bottom: none !important; }
+      .hamburger { display: flex; }
+      .feed-wrapper { grid-template-columns: 1fr; padding: 2rem 1.2rem 4rem; gap: 2rem; }
+      .feed-sidebar { position: static; }
+      .page-header { padding: 3.5rem 1.2rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+<div id="fb-root"></div>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Rancho Cascada"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#ueber">Über uns</a></li>
+    <li><a href="geschichte.html">Geschichte</a></li>
+    <li><a href="index.html#wanderungen">Wanderungen</a></li>
+    <li><a href="aktuelles.html" class="active">Aktuelles</a></li>
+    <li><a href="index.html#kontakt" class="nav-cta">Anfrage stellen</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-content">
+    <div>
+      <p class="label">Facebook · Rancho Cascada</p>
+      <h1>Aktuelles vom Hof</h1>
+      <p>Nachwuchs, Schur-Tage, Wanderungen, Tiergeschichten – alles direkt von unserer Facebook-Seite.</p>
+    </div>
+    <a class="fb-follow-btn" href="https://www.facebook.com/FarmvonMarion/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      Auf Facebook folgen
+    </a>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Startseite</a>
+  <span>&rsaquo;</span>
+  Aktuelles
+</div>
+
+<!-- FEED + SIDEBAR -->
+<div class="feed-wrapper">
+
+  <!-- MAIN: scrollbarer Facebook-Feed -->
+  <div class="feed-main">
+    <h2>Alle Beiträge</h2>
+    <div class="fb-feed-wrap">
+      <div class="fb-page"
+        data-href="https://www.facebook.com/FarmvonMarion/"
+        data-tabs="timeline"
+        data-width="600"
+        data-height="1200"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/FarmvonMarion/" class="fb-xfbml-parse-ignore">
+          <div class="fb-loading-hint">
+            <p>Der Facebook-Feed wird geladen …</p>
+            <p style="margin-top:0.5rem;">Falls nichts erscheint: <a href="https://www.facebook.com/FarmvonMarion/" target="_blank" rel="noopener">direkt auf Facebook besuchen &rarr;</a></p>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="feed-sidebar">
+
+    <div class="sidebar-card">
+      <p class="section-label">Wanderungen</p>
+      <h3>Jetzt buchen</h3>
+      <p>Lamawanderungen und Patenschaften – nur nach telefonischer Voranmeldung.</p>
+      <a href="index.html#wanderungen" class="btn-green">Angebote ansehen</a>
+    </div>
+
+    <div class="sidebar-card">
+      <p class="section-label">So finden Sie uns</p>
+      <h3>Kontakt &amp; Anfahrt</h3>
+      <div class="quick-info">
+        <div class="quick-info-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>Beethovenstraße 17<br>15345 Altlandsberg</span>
+        </div>
+        <div class="quick-info-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span><a href="tel:+4915170870534" style="color:var(--green);font-weight:700;">0151 / 708 705 34</a><br><small>Mo–Sa, 19:00–20:30 Uhr</small></span>
+        </div>
+        <div class="quick-info-item">
+          <svg viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <span>S5 bis Hoppegarten,<br>dann Bus 944</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card" style="background:var(--green);color:white;">
+      <p class="section-label" style="color:rgba(255,255,255,0.6);">Facebook</p>
+      <h3 style="color:white;margin-bottom:0.7rem;">Folgen Sie uns</h3>
+      <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;">Verpassen Sie keinen Beitrag – folgen Sie Rancho Cascada auf Facebook.</p>
+      <a href="https://www.facebook.com/FarmvonMarion/" target="_blank" rel="noopener"
+         style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;padding:0.7rem 1rem;background:var(--fb-blue);color:white;text-decoration:none;border-radius:4px;font-size:0.88rem;font-weight:700;justify-content:center;">
+        <svg width="16" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        facebook.com/FarmvonMarion
+      </a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="geschichte.html">Geschichte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <p>&copy; 2026 Rancho Cascada &ndash; Alpakahof &middot; Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>

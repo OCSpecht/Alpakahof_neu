@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung – Rancho Cascada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D5016; --green-light: #4a7a28; --brown: #8B4513;
+      --cream: #FAF7F2; --beige: #E8DDD0; --text: #2C2C2C;
+      --text-light: #6B6B6B; --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--cream); font-size: 16px; line-height: 1.8; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--beige); padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 0.5rem 1.2rem !important; border-radius: 4px; border-bottom: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); }
+
+    .page-header { margin-top: 72px; background: var(--green); color: var(--white); padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover no-repeat; opacity: 0.12; }
+    .page-header-content { position: relative; max-width: 680px; }
+    .page-header .label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+
+    .breadcrumb { background: var(--white); border-bottom: 1px solid var(--beige); padding: 0.8rem 2rem; font-size: 0.85rem; color: var(--text-light); }
+    .breadcrumb a { color: var(--green); text-decoration: none; font-weight: 700; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    .content-wrapper { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--green); margin: 2.5rem 0 0.8rem; padding-top: 2rem; border-top: 1px solid var(--beige); }
+    h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--green); }
+
+    .info-block { background: var(--white); border-radius: 8px; padding: 1.5rem 2rem; margin: 1rem 0 1.5rem; border-left: 3px solid var(--green); }
+    .info-block p { margin-bottom: 0.3rem; }
+
+    ul.rights-list { margin: 0.6rem 0 1rem 1.5rem; }
+    ul.rights-list li { margin-bottom: 0.4rem; font-size: 0.95rem; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 3rem; padding: 0.8rem 1.8rem; background: var(--green); color: var(--white); text-decoration: none; border-radius: 4px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s; }
+    .back-link:hover { background: var(--green-light); }
+
+    footer { background: #1a2e0a; color: rgba(255,255,255,0.55); text-align: center; padding: 2.5rem 2rem; font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    footer a:hover { color: #ffffff; }
+    .footer-links { margin-bottom: 0.8rem; display: flex; gap: 2rem; justify-content: center; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); flex-direction: column; gap: 0; border-bottom: 1px solid var(--beige); }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-top: 1px solid var(--beige); }
+      .nav-links a { display: block; padding: 1rem 1.5rem; border-bottom: none !important; }
+      .hamburger { display: flex; }
+      .content-wrapper { padding: 3rem 1.2rem 4rem; }
+      .info-block { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Rancho Cascada"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#ueber">Über uns</a></li>
+    <li><a href="geschichte.html">Geschichte</a></li>
+    <li><a href="index.html#wanderungen">Wanderungen</a></li>
+    <li><a href="aktuelles.html">Aktuelles</a></li>
+    <li><a href="index.html#kontakt" class="nav-cta">Anfrage stellen</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-content">
+    <p class="label">Rechtliches</p>
+    <h1>Datenschutzerklärung</h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Startseite</a>
+  <span>&rsaquo;</span>
+  <a href="impressum.html">Impressum</a>
+  <span>&rsaquo;</span>
+  Datenschutz
+</div>
+
+<div class="content-wrapper">
+
+  <p>Sehr geehrte Besucherin, sehr geehrter Besucher unserer Homepage, wir möchten Sie darüber informieren, dass beim Besuch unserer Homepage personenbezogene Daten erhoben werden. Personenbezogen sind Daten, die auf Sie persönlich beziehbar sind (z.&nbsp;B. Name, E-Mail, Nutzerverhalten). Wir als Betreiber dieser Webseite halten uns an die geltenden Datenschutzgesetze und erheben Daten nur in technisch notwendigem Umfang. Ihre Daten werden nur bei Vorhandensein einer gesetzlichen Grundlage oder Ihrer ausdrücklichen vorherigen Einwilligung weitergegeben.</p>
+
+  <h2>Verantwortliche Stelle</h2>
+  <div class="info-block">
+    <p><strong>Alpaka- und Lamahof Rancho Cascada</strong></p>
+    <p>Marion Specht<br>Kiefernallee 3<br>15366 Neuenhagen</p>
+    <p style="margin-top:0.5rem;">Telefon: <a href="tel:+4915170870534">0151 / 708 705 34</a> (kein Fax)<br>
+    E-Mail: <a href="mailto:Lamamamamarion@gmx.de">Lamamamamarion@gmx.de</a></p>
+  </div>
+
+  <h2>Zweck der Datenerhebung</h2>
+  <p>Unsere Homepage dient ausschließlich der Bereitstellung von Informationen über unseren Hof, unser Spektrum und über die Möglichkeit zum Erwerb von Alpakaprodukten. Beim Besuch unserer Homepage werden nur die Daten erhoben, die von Ihrem Browser an unseren Server übermittelt werden. Diese Daten sind notwendig, damit Sie unsere Homepage angezeigt bekommen und auf ihr navigieren können. Rechtsgrundlage für die Erhebung der Daten ist Art. 6 Abs. 1 f) EU-Datenschutz-Grundverordnung.</p>
+
+  <h2>Erhobene Daten</h2>
+  <p>Im Einzelnen werden folgende Daten bei Ihrem Besuch unserer Homepage erhoben:</p>
+  <ul class="rights-list">
+    <li>IP-Adresse</li>
+    <li>Art des Browsers sowie dessen Sprache und Version</li>
+    <li>Betriebssystem</li>
+    <li>Zugriffsstatus / HTTP-Statuscode</li>
+    <li>Datum und Uhrzeit der Anfrage sowie die Zeitzone</li>
+    <li>Inhalt der Anforderung und Homepage, von der sie kommt</li>
+    <li>Übertragene Datenmenge</li>
+  </ul>
+  <p>Die Löschung dieser Daten erfolgt, wenn diese nicht mehr erforderlich sind. Ferner steht Ihnen ein Beschwerderecht beim für Sie zuständigen Landesbeauftragten für Datenschutz und Informationssicherheit des Bundeslandes Brandenburg zu.</p>
+
+  <h2>Ihre Rechte</h2>
+  <p>Sie haben uns gegenüber folgende Rechte hinsichtlich der bei uns über Sie gespeicherten Daten:</p>
+  <ul class="rights-list">
+    <li>Recht auf Löschung (gem. Art. 17 und 19 DSGVO)</li>
+    <li>Recht auf Berichtigung (gem. Art. 16 und 19 DSGVO)</li>
+    <li>Recht auf Datenübertragbarkeit (gem. Art. 20 DSGVO)</li>
+    <li>Recht auf Einschränkung der Verarbeitung (gem. Art. 18 und 19 DSGVO)</li>
+    <li>Recht auf Auskunft (gem. Art. 15 DSGVO)</li>
+    <li>Recht auf Widerspruch gegen die Verarbeitung (gem. Art. 21 DSGVO)</li>
+  </ul>
+  <p>Sie erhalten jederzeit unentgeltlich Auskunft über die von uns gespeicherten personenbezogenen Daten zu Ihrer Person sowie zur Herkunft, dem Empfänger und dem Zweck von Datenerhebung sowie Datenverarbeitung. Außerdem haben Sie das Recht, die Berichtigung, die Sperrung oder Löschung Ihrer Daten zu verlangen. Wenden Sie sich dafür bitte per Post oder E-Mail an die oben angegebenen Kontaktdaten.</p>
+
+  <h2>Kontaktformular und E-Mail-Kontakt</h2>
+  <p>Wenn Sie uns per Kontaktformular Terminwünsche oder Anfragen zukommen lassen, werden die von Ihnen mitgeteilten Daten (E-Mail-Adresse, Name, Telefonnummer) gespeichert, um Ihre Fragen beantworten zu können. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. a DSGVO. Diese Daten werden gelöscht, sobald sie nicht mehr benötigt werden und keine gesetzlichen Aufbewahrungspflichten bestehen. Dritten werden diese Daten nicht zugänglich gemacht.</p>
+  <p>Bitte beachten Sie: Senden Sie uns keine vertraulichen Daten per E-Mail oder Kontaktformular, sondern wählen Sie dafür den Postweg oder das Telefon. Für unverlangt zugesendete Daten lehnen wir jede Haftung ab.</p>
+
+  <h2>Änderungen dieser Datenschutzerklärung</h2>
+  <p>Wir behalten uns vor, diese Datenschutzerklärung jederzeit zu ändern und/oder zu ergänzen. Diese Datenschutzerklärung wurde erstellt mit freundlicher Unterstützung von <a href="https://www.arzt-datenschutz.de" target="_blank" rel="noopener">www.arzt-datenschutz.de</a>.</p>
+
+  <a href="impressum.html" class="back-link">&larr; Zum Impressum</a>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="geschichte.html">Geschichte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <p>&copy; 2026 Rancho Cascada &ndash; Alpakahof &middot; Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

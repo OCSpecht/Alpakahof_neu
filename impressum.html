@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum – Rancho Cascada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D5016; --green-light: #4a7a28; --brown: #8B4513;
+      --cream: #FAF7F2; --beige: #E8DDD0; --text: #2C2C2C;
+      --text-light: #6B6B6B; --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--cream); font-size: 16px; line-height: 1.75; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--beige); padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 0.5rem 1.2rem !important; border-radius: 4px; border-bottom: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); }
+
+    .page-header { margin-top: 72px; background: var(--green); color: var(--white); padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: url('images/hero.jpg') center/cover no-repeat; opacity: 0.12; }
+    .page-header-content { position: relative; max-width: 680px; }
+    .page-header .label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+
+    .breadcrumb { background: var(--white); border-bottom: 1px solid var(--beige); padding: 0.8rem 2rem; font-size: 0.85rem; color: var(--text-light); }
+    .breadcrumb a { color: var(--green); text-decoration: none; font-weight: 700; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    .content-wrapper { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green); margin: 2.5rem 0 0.8rem; padding-top: 2rem; border-top: 1px solid var(--beige); }
+    h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+    h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.4rem; }
+    p { margin-bottom: 1rem; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--green); }
+
+    .info-block { background: var(--white); border-radius: 8px; padding: 1.5rem 2rem; margin: 1.2rem 0; border-left: 3px solid var(--green); }
+    .info-block p { margin-bottom: 0.3rem; }
+
+    .notice-box { background: #fff8e1; border: 1px solid #f0c040; border-radius: 8px; padding: 1rem 1.5rem; margin: 1.5rem 0; font-size: 0.9rem; color: #7a5c00; }
+
+    ul.rights-list { margin: 0.5rem 0 1rem 1.5rem; }
+    ul.rights-list li { margin-bottom: 0.3rem; font-size: 0.95rem; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 3rem; padding: 0.8rem 1.8rem; background: var(--green); color: var(--white); text-decoration: none; border-radius: 4px; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s; }
+    .back-link:hover { background: var(--green-light); }
+
+    footer { background: #1a2e0a; color: rgba(255,255,255,0.55); text-align: center; padding: 2.5rem 2rem; font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    footer a:hover { color: #ffffff; }
+    .footer-links { margin-bottom: 0.8rem; display: flex; gap: 2rem; justify-content: center; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); flex-direction: column; gap: 0; border-bottom: 1px solid var(--beige); }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-top: 1px solid var(--beige); }
+      .nav-links a { display: block; padding: 1rem 1.5rem; border-bottom: none !important; }
+      .hamburger { display: flex; }
+      .content-wrapper { padding: 3rem 1.2rem 4rem; }
+      .info-block { padding: 1.2rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Rancho Cascada"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#ueber">Über uns</a></li>
+    <li><a href="geschichte.html">Geschichte</a></li>
+    <li><a href="index.html#wanderungen">Wanderungen</a></li>
+    <li><a href="aktuelles.html">Aktuelles</a></li>
+    <li><a href="index.html#kontakt" class="nav-cta">Anfrage stellen</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-content">
+    <p class="label">Rechtliches</p>
+    <h1>Impressum</h1>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Startseite</a>
+  <span>&rsaquo;</span>
+  Impressum
+</div>
+
+<div class="content-wrapper">
+
+  <h2>Angaben gemäß § 5 TMG</h2>
+
+  <div class="info-block">
+    <p><strong>Rancho Cascada – Alpaka- und Lamahof</strong></p>
+    <p>Inhaberin: Marion Specht</p>
+    <p>Kiefernallee 3<br>15366 Neuenhagen b. Berlin</p>
+    <p style="margin-top:0.6rem;">Telefon: <a href="tel:+4915170870534">0151 / 708 705 34</a><br>
+    E-Mail: <a href="mailto:Lamamamamarion@gmx.de">Lamamamamarion@gmx.de</a></p>
+    <p style="margin-top:0.6rem;">Steuernummer: 064/299/17202</p>
+  </div>
+
+  <div class="notice-box">
+    <strong>Wichtiger Hinweis:</strong> Die Tiere werden gehalten in <strong>15345 Altlandsberg, Beethovenstraße 17</strong> – nicht in Neuenhagen! Besucher zur Wanderung, zur Streichelstunde oder zum Kindergeburtstag kommen bitte nach Altlandsberg.
+  </div>
+
+  <h2>Bankverbindung</h2>
+  <p>Für Anzahlungen und Patenschaften:</p>
+  <div class="info-block">
+    <p>Sparkasse MOL<br>
+    IBAN: DE64 1705 4040 3000 2685 28<br>
+    Inhaberin: Marion Specht</p>
+    <p style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-light);">Bei Buchung bitte Ihren Namen und den Tag der Wanderung als Verwendungszweck angeben.</p>
+  </div>
+
+  <h2>Verantwortlich für den Inhalt</h2>
+  <p>Marion Specht (Anschrift wie oben)</p>
+
+  <h2>Erstellung &amp; Fotos</h2>
+  <p>Erstellung der Homepage: Sandra und Kristoffer Rauch<br>
+  Fotos: Sandra Specht und Mille K Photography</p>
+
+  <h2>Haftungsausschluss</h2>
+  <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</p>
+
+  <a href="datenschutz.html" style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:2.5rem;font-size:0.92rem;font-weight:700;color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);padding-bottom:2px;">Zur Datenschutzerklärung &rarr;</a>
+
+  <br>
+  <a href="index.html" class="back-link">&larr; Zurück zur Startseite</a>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="geschichte.html">Geschichte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <p>&copy; 2026 Rancho Cascada &ndash; Alpakahof &middot; Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geschichte – Rancho Cascada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D5016;
+      --green-light: #4a7a28;
+      --brown: #8B4513;
+      --cream: #FAF7F2;
+      --beige: #E8DDD0;
+      --text: #2C2C2C;
+      --text-light: #6B6B6B;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--cream); font-size: 16px; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--beige); padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 0.5rem 1.2rem !important; border-radius: 4px; border-bottom: none !important; }
+    .nav-cta:hover { background: var(--green-light) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin-top: 72px;
+      background: var(--green);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/hero.jpg') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    .page-header-content { position: relative; max-width: 680px; margin: 0 auto; }
+    .page-header .section-label { color: rgba(255,255,255,0.65); font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.8rem; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .page-header p { font-size: 1.05rem; opacity: 0.85; }
+
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--white); border-bottom: 1px solid var(--beige); padding: 0.8rem 2rem; font-size: 0.85rem; color: var(--text-light); }
+    .breadcrumb a { color: var(--green); text-decoration: none; font-weight: 700; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+    /* CONTENT */
+    .content-wrapper { max-width: 760px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+
+    .content-wrapper h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--green);
+      margin: 3rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--beige);
+    }
+    .content-wrapper h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+
+    .content-wrapper p { margin-bottom: 1.2rem; color: var(--text); line-height: 1.85; }
+    .content-wrapper p:last-child { margin-bottom: 0; }
+
+    /* PLACEHOLDER NOTICE */
+    .placeholder-box {
+      background: #fff8e1;
+      border: 2px dashed #f0c040;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+      color: #7a5c00;
+    }
+    .placeholder-box strong { display: block; margin-bottom: 0.3rem; font-size: 1rem; }
+
+    /* PULL QUOTE */
+    blockquote {
+      border-left: 4px solid var(--green);
+      padding: 0.8rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--white);
+      border-radius: 0 8px 8px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--green);
+    }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 3.5rem;
+      padding: 0.8rem 1.8rem;
+      background: var(--green);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .back-link:hover { background: var(--green-light); }
+
+    /* FOOTER */
+    footer { background: #1a2e0a; color: rgba(255,255,255,0.55); text-align: center; padding: 2.5rem 2rem; font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    footer a:hover { color: #ffffff; }
+    .footer-links { margin-bottom: 0.8rem; display: flex; gap: 2rem; justify-content: center; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); flex-direction: column; gap: 0; border-bottom: 1px solid var(--beige); }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-top: 1px solid var(--beige); }
+      .nav-links a { display: block; padding: 1rem 1.5rem; border-bottom: none !important; }
+      .hamburger { display: flex; }
+      .page-header { padding: 4rem 1.2rem 3rem; }
+      .content-wrapper { padding: 3rem 1.2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Rancho Cascada">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#ueber">Über uns</a></li>
+    <li><a href="geschichte.html" class="active">Geschichte</a></li>
+    <li><a href="index.html#wanderungen">Wanderungen</a></li>
+    <li><a href="aktuelles.html">Aktuelles</a></li>
+    <li><a href="index.html#kontakt" class="nav-cta">Anfrage stellen</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-content">
+    <p class="section-label">Rancho Cascada</p>
+    <h1>Unsere Geschichte</h1>
+    <p>Von den Anden Perus bis nach Altlandsberg – wie aus einer Reise eine Leidenschaft und aus einer Leidenschaft ein Hof wurde.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Startseite</a>
+  <span>&rsaquo;</span>
+  Geschichte
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrapper">
+
+  <blockquote>„Reisen bildet, so sagt man. Manchmal gewinnt man dabei auch Freunde."</blockquote>
+
+  <h2>Der erste Aufbruch – Peru 2006</h2>
+  <p>Ein Indiojunge aus Peru, das neue Weltwunder Machu Picchu, Alpakamützen, bunte Strickpullis und die atemberaubenden Berge der Anden – das fiel uns zu Peru ein, bevor wir im Herbst 2006 zum ersten Mal nach Südamerika aufbrachen.</p>
+  <p>Als wir zurückkamen, hatten wir erkannt: Peru bietet weit mehr als Indianermärkte im Hochland der Anden, Kinder mit rotbunten Mützen und Schafjungen auf dem Arm oder Lamas vor den schneebedeckten 6000er Bergen.</p>
+
+  <h2>Vier Reisen ins Herz der Anden</h2>
+  <p>Und so kehrten wir noch dreimal ins Land zurück – nach Südamerika, in das Herz der Anden. Vom „Nabel der Welt" Cusco, der alten Inkahauptstadt, besuchten wir mit unserem Freund und Reiseführer Heradio die Hochlandindianer, denen doch längst unser Herz gehörte. Mit Rucksack und indianischen Trägern wanderten wir tagelang durch die Anden, in Höhen bis über 5.000 Meter, zu einsamen Hütten und spielenden Indianerkindern.</p>
+  <p>Wir lernten die Menschen näher kennen, ihre Lieder und ihre Feiern, aber auch ihre Sorgen und Nöte. Viele leben völlig autark – ohne Wasser und Strom, ohne Kühlschrank und Fernseher. Sie besitzen zum Teil große Alpakaherden, aber sonst nichts. Die Menschen müssen von einem Dollar am Tag leben.</p>
+  <p>Zusammen mit den Teilnehmern unserer ersten Reise – Giselher aus Altlandsberg, Roland aus Elsterwerda und Elke aus Neuenhagen – unterstützen wir diese Familien. Wir haben die Erweiterung einer Grundschule in Cusco mitfinanziert und verkaufen für einige peruanische Familien aus der kleinen Ortschaft Tinki im Ausangategebirge ihre handgefertigten Erzeugnisse aus Alpaka. Diese produzieren sie unter dem Namen <em>„Cascada"</em> ausschließlich für uns.</p>
+
+  <blockquote>„Zu Ostern 2008 wurden wir vor einem 2.000 Jahre alten Grab einer Herrscherin der Moche zu Ehrenbürgern Perus ernannt."</blockquote>
+
+  <p>Das war im Ausgrabungsgebiet <em>„El brucho"</em> (der Hexer) nördlich von Lima – damals der Öffentlichkeit noch nicht zugänglich.</p>
+
+  <h2>Die ersten Tiere – 2007</h2>
+  <p>Was lag da näher, als selbst eine kleine Herde kulleräugiger und kuschelweicher Teddybären zu halten? 2007 kauften wir drei kleine Alpaka-Hengstfohlen. Später gesellte sich der Lamamischling Paco dazu. Die Fohlen sind inzwischen zu stattlichen Herren herangewachsen.</p>
+  <p>Gern hätten wir die Herde mit einigen Damen vergrößert – doch lange Zeit verhinderten die kleinen Koppeln dies. Im August 2012 haben wir uns dann doch einen Traum erfüllt: Wir kauften zehn Lama-Damen, die wir auf einer Weide in Hoppegarten, zwei Kilometer vom Hof entfernt, pflegten.</p>
+  <p>Im Sommer 2013 erblickte das erste Baby das Licht der Welt. Wir tauften sie <strong>Julie</strong>.</p>
+
+  <h2>Die Ranch wächst – Altlandsberg ab 2013</h2>
+  <p>Seit Oktober 2013 richten wir eine neue Koppel in Altlandsberg ein, auf der endlich alle Tiere gemeinsam und mit ausreichend Platz zusammenleben. Wenn die Lamas den Feldherrenhügel in der Mitte der Wiese erklimmen, können sie von der Umgehungsstraße aus beobachtet werden. Wir hoffen nur, dass die langen Hälse beider Parteien keine Unfälle provozieren!</p>
+  <p>Mitte März 2014 gesellten sich <strong>Margarete</strong> und <strong>Moritz</strong> dazu – zwei schottische Hochlandrinder. Im August wurde Margarete Mama, seitdem sind es der Rinder drei. Das schneeweiße Mädchen tauften wir <strong>Mathilda</strong>.</p>
+
+  <h2>Nandus, Füchse und frisches Blut</h2>
+  <p>Was fehlte denn nun noch? In der argentinischen Pampa hatten wir Nandus gesehen – flugunfähige Laufvögel, halb so groß wie afrikanische Strauße. Waren die in Deutschland erhältlich? Jawohl. Nicht ganz einfach, aber wir zogen drei einwöchige Küken zu stattlichen Teenagern auf. Leider holte einer der Füchse, die im Sommer auf unserer Koppel groß geworden waren, in einer Nacht den kleinen Hahn. Durch einen glücklichen Zufall erhielten wir später zwei gleichaltrige dazu – nun erfreuen sich alle bester Gesundheit.</p>
+  <p>Die Jahre vergingen und es wurden der Tiere immer mehr. <strong>Fridolin</strong> kam vom Bodensee zu uns. Die Lamamädchen mögen ihn sehr – acht Kinder nennt er inzwischen sein Eigen. Nun kommt er in die Jahre. Für den Nachwuchs soll sich künftig <strong>Rohan</strong> kümmern: ein wunderschöner großer Lamahengst mit kanadischen Eltern. Frisches Blut für die Herde. Noch ist er erst drei, ein Teenager. Mal sehen.</p>
+
+  <h2>Pumbaa, Paula und ein Wiedersehen in Peru</h2>
+  <p>Seit Herbst 2018 wohnt <strong>Pumbaa</strong> bei uns – ein Minischwein-Eber, den ein böser Bub im Wald von Gielsdorf ausgesetzt hatte. Über das Tierheim gelangte er zu unserer Ranch. Er fühlt sich wohl und ist everybodys Darling: Jeden Besucher kontrolliert er, ob er auch etwas zu essen dabei hat. Damit er nicht zu einsam ist, haben wir <strong>Paula</strong> dazugesellt – ebenfalls ein Minischwein, das unübersehbar Wildschwein-Ahnen hat.</p>
+  <p>Im Oktober waren wir wieder in Peru – Marion zum ersten Mal. Heradio und die anderen Freunde besuchen. Abermals besuchten wir den Manú-Nationalpark am Amazonas, bereisten zwei Dörfer und statteten die dortigen Grundschulen mit Stühlen und Tischen aus. War nicht teuer – und den Kindern hat es geholfen.</p>
+
+  <blockquote>„Südamerika ist nicht weit. Manchmal nur 60 S-Bahn-Minuten vom Alexanderplatz – und immer nah am Herzen."</blockquote>
+
+  <a href="index.html" class="back-link">
+    &larr; Zurück zur Startseite
+  </a>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="geschichte.html">Geschichte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <p>&copy; 2026 Rancho Cascada &ndash; Alpakahof &middot; Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
