@@ -4,7 +4,7 @@
  * Einfach die E-Mail-Adresse unten anpassen, fertig.
  */
 
-$empfaenger = 'info@rancho-cascada.de'; // <-- Eure E-Mail-Adresse hier eintragen
+$empfaenger = 'Lamamamamarion@gmx.de'; // <-- Eure E-Mail-Adresse hier eintragen
 
 // Nur POST-Anfragen akzeptieren
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
