@@ -96,7 +96,7 @@
 
     /* WANDERUNGEN */
     #wanderungen { background: var(--cream); }
-    .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 820px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; }
     .card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.07); transition: transform 0.3s, box-shadow 0.3s; }
     .card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
     .card-image { aspect-ratio: 4/3; overflow: hidden; }
@@ -157,6 +157,10 @@
     footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
     footer a:hover { color: #ffffff; }
     .footer-links { margin-bottom: 0.8rem; display: flex; gap: 2rem; justify-content: center; }
+
+    @media (max-width: 960px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 
     /* MOBILE */
     @media (max-width: 768px) {
@@ -376,13 +380,38 @@
           <ul style="font-size:0.88rem;color:var(--text-light);margin:0.8rem 0 1rem 1.1rem;line-height:1.9;">
             <li>Freier Eintritt für 2 Personen zu allen Tieren</li>
             <li>Ganztägige Möglichkeit zum Schmusen &amp; Spazieren (nach Absprache)</li>
-            <li>Inklusive einem Platz auf unserem Patenschaft-Board </li>
+            <li>Inklusive einem Platz auf unserem Patenschaft-Board</li>
             <li>Laufzeit: 1 Jahr</li>
-            <br>
           </ul>
           <div class="card-price">
             <div><div class="price-amount">120 €</div><div class="price-label">pro Jahr</div></div>
             <a href="tel:+4915170870534" class="btn-card">Jetzt anrufen</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image" style="background: linear-gradient(135deg, var(--green) 0%, #4a7a28 60%, var(--brown) 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem;">
+          <svg viewBox="0 0 64 64" style="width:64px;fill:none;stroke:rgba(255,255,255,0.9);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;">
+            <rect x="8" y="22" width="48" height="34" rx="3"/>
+            <path d="M8 34h48M32 22v34"/>
+            <path d="M32 22c0 0-6-12 0-12s0 12 0 12M32 22c0 0 6-12 0-12"/>
+            <path d="M20 22c0 0-6-10 4-10s8 10 8 10M44 22c0 0 6-10-4-10s-8 10-8 10"/>
+          </svg>
+          <span style="color:rgba(255,255,255,0.85);font-size:0.78rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Rancho Cascada</span>
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Perfektes Geschenk</p>
+          <h3>Gutschein</h3>
+          <p>Noch unentschlossen oder auf der Suche nach einem ganz besonderen Geschenk? Ein Gutschein für Rancho Cascada lässt keine Wünsche offen – einlösbar für eine Lamawanderung oder eine Tierpatenschaft.</p>
+          <ul style="font-size:0.88rem;color:var(--text-light);margin:0.8rem 0 1rem 1.1rem;line-height:1.9;">
+            <li>Einlösbar für Wanderungen &amp; Patenschaften</li>
+            <li>Betrag frei wählbar</li>
+            <li>Terminvereinbarung bequem nach dem Erwerb</li>
+            <li>Ideal als Geburtstags- oder Weihnachtsgeschenk</li>
+          </ul>
+          <div class="card-price">
+            <div><div class="price-amount">Frei wählbar</div><div class="price-label">Betrag nach Wunsch</div></div>
+            <a href="tel:+4915170870534" class="btn-card">Jetzt anfragen</a>
           </div>
         </div>
       </div>
@@ -452,6 +481,7 @@
         </div>
       </div>
       <div class="kontakt-form">
+        <div id="formStatus" style="display:none;padding:1rem 1.2rem;border-radius:6px;margin-bottom:1.5rem;font-size:0.95rem;font-weight:700;"></div>
         <form action="mail.php" method="post">
           <div class="form-row">
             <div class="form-group"><label>Vorname</label><input type="text" name="vorname" placeholder="Maria" required></div>
@@ -464,6 +494,7 @@
             <select name="betreff">
               <option>Lamawanderung</option>
               <option>Patenschaft</option>
+              <option>Gutschein</option>
               <option>Allgemeine Frage</option>
             </select>
           </div>
@@ -577,6 +608,32 @@
     startAuto();
   })();
   // ─────────────────────────────────────────────────────────────
+
+  // Kontaktformular Status-Meldung
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var status = params.get('status');
+    var box = document.getElementById('formStatus');
+    if (status === 'ok' && box) {
+      box.textContent = '✓ Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns bald.';
+      box.style.display = 'block';
+      box.style.background = 'rgba(255,255,255,0.15)';
+      box.style.border = '1px solid rgba(255,255,255,0.4)';
+      box.style.color = '#ffffff';
+      // Zur Kontakt-Section scrollen
+      document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // URL bereinigen
+      history.replaceState(null, '', window.location.pathname + '#kontakt');
+    } else if (status === 'fehler' && box) {
+      box.textContent = '✗ Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
+      box.style.display = 'block';
+      box.style.background = 'rgba(180,30,30,0.3)';
+      box.style.border = '1px solid rgba(255,100,100,0.5)';
+      box.style.color = '#ffffff';
+      document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', window.location.pathname + '#kontakt');
+    }
+  })();
 
   // Sticky nav shadow on scroll
   window.addEventListener('scroll', function() {

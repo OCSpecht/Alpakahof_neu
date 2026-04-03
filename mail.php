@@ -38,7 +38,7 @@ $body .= "E-Mail:   $email\n";
 $body .= "Betreff:  $betreff\n\n";
 $body .= "Nachricht:\n$nachricht\n";
 
-$headers  = "From: Rancho Cascada Website <noreply@rancho-cascada.de>\r\n";
+$headers  = "From: Rancho Cascada <Lamamamamarion@gmx.de>\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
