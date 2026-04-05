@@ -1,0 +1,60 @@
+# ── Rancho Cascada – Apache-Konfiguration ─────────────────────────────
+
+# WebP automatisch ausliefern, wenn Browser es unterstützt
+# und eine .webp-Datei neben der angeforderten JPG/PNG existiert
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # WebP-Unterstützung prüfen und .webp-Datei anbieten
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png)$
+  RewriteCond %1.webp -f
+  RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+</IfModule>
+
+# Vary-Header setzen, damit CDN/Proxy WebP und JPG separat cachen
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpe?g|png|webp)$">
+    Header append Vary Accept
+  </FilesMatch>
+</IfModule>
+
+# Korrekte MIME-Types für WebP
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+# ── Browser-Caching ────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Bilder: 6 Monate
+  ExpiresByType image/jpeg    "access plus 6 months"
+  ExpiresByType image/png     "access plus 6 months"
+  ExpiresByType image/webp    "access plus 6 months"
+
+  # Schriften: 1 Jahr
+  ExpiresByType font/woff2    "access plus 1 year"
+  ExpiresByType font/woff     "access plus 1 year"
+
+  # CSS & JS: 1 Woche
+  ExpiresByType text/css      "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+
+  # HTML: kein Cache (damit Änderungen sofort sichtbar sind)
+  ExpiresByType text/html     "access plus 0 seconds"
+</IfModule>
+
+# ── Gzip-Komprimierung für Text-Dateien ────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE font/woff2 font/woff image/svg+xml
+</IfModule>
+
+# ── Sicherheits-Header ─────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
