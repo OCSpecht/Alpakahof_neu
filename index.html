@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rancho Cascada – Alpakahof</title>
+
+  <!-- Preconnect für externe Dienste -->
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+  <link rel="preconnect" href="https://www.facebook.com" crossorigin>
+
+  <!-- Kritische Schriften vorladen -->
+  <link rel="preload" href="fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-700.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Hero-Bild vorladen (Largest Contentful Paint) -->
+  <link rel="preload" href="images/hero.jpg" as="image" fetchpriority="high">
+
   <link rel="stylesheet" href="fonts/fonts.css">
   <!-- Facebook SDK -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v19.0"></script>
@@ -205,7 +217,7 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="images/hero.jpg" alt="Rancho Cascada – Alpakahof">
+    <img src="images/hero.jpg" alt="Rancho Cascada – Alpakahof" fetchpriority="high" decoding="sync">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -227,7 +239,7 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-image">
-        <img src="images/about.jpg" alt="Unser Hof">
+        <img src="images/about.jpg" alt="Unser Hof" decoding="async">
       </div>
       <div>
         <p class="section-label">Über uns</p>
@@ -266,79 +278,79 @@
     </button>
     <div class="slider-viewport" id="sliderViewport">
       <div class="slider-track" id="sliderTrack">
-        <div class="slider-slide"><img src="images/gallery/DSC01376.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02247_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00299.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00285.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_8937.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/slide-2.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_9445.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_2736.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_0235.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01349.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/gallery-3.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_8795.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02213_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_7660.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02183_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_6524.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_7500.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_9958.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01388.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01463.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_2516-1536x1152.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_7486.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00272.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_8494.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/gallery-1.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_7317.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01481.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_8805.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01504.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01356.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02227_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01468.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_6161.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01486.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00280.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00282.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_2732.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_9897.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00307_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_5770-768x1365.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01464.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02152_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_7517.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00315.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/010673d5-05d3-4dce-89ec-3b603faa316a.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/photo-2025.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02250_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/slide-1.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_9521.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02150_edit2.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02237_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_2929.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_2726.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_5374-1024x576.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00327.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/slide-3.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DJI_20250822155807_0004_D.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02251_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02218_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/slide-5.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/gallery-6.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/gallery-5.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/slide-4.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00279.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/IMG_7579-1152x2048.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00318.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00353.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC01373.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02178_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02217_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC02241_edit.jpg" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00275.JPG" alt="Rancho Cascada" loading="lazy"></div>
-        <div class="slider-slide"><img src="images/gallery/DSC00368.JPG" alt="Rancho Cascada" loading="lazy"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01376.JPG" alt="Rancho Cascada" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02247_edit.jpg" alt="Rancho Cascada" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00299.JPG" alt="Rancho Cascada" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00285.JPG" alt="Rancho Cascada" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8937.JPG" alt="Rancho Cascada" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-2.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9445.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2736.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_0235.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01349.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-3.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8795.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02213_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7660.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02183_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_6524.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7500.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9958.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01388.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01463.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2516-1536x1152.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7486.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00272.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8494.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-1.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7317.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01481.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_8805.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01504.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01356.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02227_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01468.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_6161.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01486.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00280.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00282.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2732.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9897.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00307_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_5770-768x1365.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01464.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02152_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7517.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00315.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/010673d5-05d3-4dce-89ec-3b603faa316a.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/photo-2025.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02250_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-1.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_9521.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02150_edit2.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02237_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2929.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_2726.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_5374-1024x576.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00327.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-3.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DJI_20250822155807_0004_D.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02251_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02218_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-5.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-6.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/gallery-5.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/slide-4.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00279.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/IMG_7579-1152x2048.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00318.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00353.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC01373.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02178_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02217_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC02241_edit.jpg" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00275.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
+        <div class="slider-slide"><img src="images/gallery/DSC00368.JPG" alt="Rancho Cascada" loading="lazy" decoding="async"></div>
       </div>
     </div>
     <button class="slider-btn next" id="sliderNext" aria-label="Nächstes Bild">
@@ -638,6 +650,20 @@
       history.replaceState(null, '', window.location.pathname + '#kontakt');
     }
   })();
+
+  // Galerie-Bilder nach vollständigem Laden im Hintergrund vorausladen
+  window.addEventListener('load', function() {
+    var lazyImgs = document.querySelectorAll('.slider-slide img[loading="lazy"]');
+    var i = 0;
+    function loadNext() {
+      if (i >= lazyImgs.length) return;
+      var pre = new window.Image();
+      pre.src = lazyImgs[i].src;
+      i++;
+      setTimeout(loadNext, 80); // je 80ms Pause – Haupt-Thread bleibt reaktionsfähig
+    }
+    setTimeout(loadNext, 1500); // 1,5s warten, bis Seite vollständig interaktiv ist
+  });
 
   // Sticky nav shadow on scroll
   window.addEventListener('scroll', function() {
