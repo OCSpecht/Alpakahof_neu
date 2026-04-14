@@ -82,6 +82,11 @@
     .quick-info-item { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.88rem; }
     .quick-info-item svg { width: 16px; fill: var(--green); flex-shrink: 0; margin-top: 2px; }
 
+    /* Hinweiszeile über dem Feed */
+    .fb-hint { font-size: 0.82rem; color: var(--text-light); background: var(--beige); border-radius: 6px; padding: 0.6rem 0.9rem; margin-bottom: 0.8rem; line-height: 1.5; }
+    .fb-hint a { color: var(--green); font-weight: 700; text-decoration: none; }
+    .fb-hint a:hover { text-decoration: underline; }
+
     /* Loading state placeholder */
     .fb-loading-hint { text-align: center; padding: 3rem 2rem; color: var(--text-light); font-size: 0.9rem; }
     .fb-loading-hint a { color: var(--fb-blue); font-weight: 700; text-decoration: none; }
@@ -150,7 +155,7 @@
   <!-- MAIN: scrollbarer Facebook-Feed -->
   <div class="feed-main">
     <h2>Alle Beiträge</h2>
-    <p>Sollte der Facebook-Feed nicht korrekt angezeigt werden, überprüfen Sie bitte Ihre Sicherheitseinstellungen oder nutzen Sie einen anderen Browser.</p>
+    <p class="fb-hint">Falls der Feed nicht lädt: Sicherheitseinstellungen prüfen, anderen Browser verwenden oder <a href="https://www.facebook.com/FarmvonMarion/" target="_blank" rel="noopener">direkt auf Facebook besuchen</a>.</p>
     <div class="fb-feed-wrap">
       <div class="fb-page"
         data-href="https://www.facebook.com/FarmvonMarion/"
