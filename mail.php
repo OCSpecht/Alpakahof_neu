@@ -32,13 +32,13 @@ if (empty($vorname) || empty($email) || !filter_var($email, FILTER_VALIDATE_EMAI
 // E-Mail zusammenbauen
 $subject = "Neue Anfrage: $betreff – von $vorname $nachname";
 
-$body  = "Neue Nachricht über das Kontaktformular auf rancho-cascada.de\n\n";
+$body  = "Neue Nachricht über das Kontaktformular auf alpakahof-neuenhagen.com\n\n";
 $body .= "Name:     $vorname $nachname\n";
 $body .= "E-Mail:   $email\n";
 $body .= "Betreff:  $betreff\n\n";
 $body .= "Nachricht:\n$nachricht\n";
 
-$headers  = "From: Rancho Cascada <Lamamamamarion@gmx.de>\r\n";
+$headers  = "From: Rancho Cascada <noreply@alpakahof-neuenhagen.com>\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
