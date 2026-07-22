@@ -6,10 +6,11 @@
   RewriteEngine On
 
   # WebP-Unterstützung prüfen und .webp-Datei anbieten
+  # [NC] = case-insensitive, damit auch .JPG (großgeschrieben) erfasst wird
   RewriteCond %{HTTP_ACCEPT} image/webp
-  RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png)$
+  RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png)$ [NC]
   RewriteCond %1.webp -f
-  RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+  RewriteRule (.+)\.(jpe?g|png)$ $1.webp [NC,T=image/webp,L]
 </IfModule>
 
 # Vary-Header setzen, damit CDN/Proxy WebP und JPG separat cachen
@@ -51,6 +52,9 @@
   AddOutputFilterByType DEFLATE application/javascript application/json
   AddOutputFilterByType DEFLATE font/woff2 font/woff image/svg+xml
 </IfModule>
+
+# ── Eigene Fehlerseite ─────────────────────────────────────────────────
+ErrorDocument 404 /404.html
 
 # ── Sicherheits-Header ─────────────────────────────────────────────────
 <IfModule mod_headers.c>
