@@ -177,6 +177,22 @@
       .fb-widget-wrap { min-height: 480px; }
     }
 
+    /* BEWERTUNGEN */
+    #bewertungen { background: var(--cream); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; }
+    .review-card { background: var(--white); border-radius: 8px; padding: 2rem 1.8rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 0.9rem; position: relative; }
+    .review-card::before { content: '\201C'; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--beige); position: absolute; top: 0.4rem; right: 1.2rem; line-height: 1; }
+    .review-stars { color: #F4B400; font-size: 1.05rem; letter-spacing: 2px; }
+    .review-text { font-size: 0.97rem; color: var(--text); line-height: 1.7; font-style: italic; flex: 1; }
+    .review-source { font-size: 0.8rem; color: var(--text-light); display: flex; align-items: center; gap: 0.4rem; }
+    .review-source svg { width: 14px; height: 14px; }
+    .reviews-cta { margin-top: 2.5rem; display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; }
+    .btn-google { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.8rem; border-radius: 4px; background: var(--green); color: var(--white); font-size: 0.88rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .btn-google:hover { background: var(--green-light); transform: translateY(-1px); }
+    .btn-google svg { width: 16px; height: 16px; fill: var(--white); }
+    .reviews-cta-note { font-size: 0.88rem; color: var(--text-light); font-style: italic; }
+    @media (max-width: 768px) { .reviews-grid { grid-template-columns: 1fr; } }
+
     /* KONTAKT */
     #kontakt { background: var(--green); color: var(--white); }
     #kontakt h2 { color: var(--white); }
@@ -254,6 +270,12 @@
       "latitude": 52.5589,
       "longitude": 13.7336
     },
+    "hasMap": "https://maps.app.goo.gl/vrsDz7S4ePqLgFfF9",
+    "sameAs": [
+      "https://www.facebook.com/FarmvonMarion/",
+      "https://www.instagram.com/ranchocascadaaltandsberg/",
+      "https://maps.app.goo.gl/vrsDz7S4ePqLgFfF9"
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Angebote",
@@ -552,8 +574,18 @@
     <div class="fb-section">
       <div class="fb-text">
         <p>Was ist gerade los auf Rancho Cascada? Die neuesten Bilder, Geschichten und Ankündigungen – direkt von unserer Facebook-Seite.</p>
-        <p>Folgen Sie uns auf Facebook und verpassen Sie keine Neuigkeit: Nachwuchs auf der Weide, Schur-Tage, saisonale Angebote und Einblicke in den Alltag mit unseren Lamas und Alpakas.</p>
+        <p>Folgen Sie uns auf Facebook und Instagram und verpassen Sie keine Neuigkeit: Nachwuchs auf der Weide, Schur-Tage, saisonale Angebote und Einblicke in den Alltag mit unseren Lamas und Alpakas.</p>
         <a href="aktuelles.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.88rem;font-weight:700;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--brown);padding-bottom:2px;">Mehr Beiträge ansehen &rarr;</a>
+        <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:1.2rem;">
+          <a href="https://www.facebook.com/FarmvonMarion/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.1rem;background:#1877F2;color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem;font-weight:700;">
+            <svg width="15" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/ranchocascadaaltandsberg/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.1rem;background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem;font-weight:700;">
+            <svg width="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+        </div>
         <p style="margin-top:0.8rem;font-size:0.82rem;color:var(--text-light);background:var(--beige);border-radius:6px;padding:0.6rem 0.9rem;line-height:1.5;">Falls der Feed nicht lädt: Sicherheitseinstellungen prüfen, anderen Browser verwenden oder <a href="https://www.facebook.com/FarmvonMarion/" target="_blank" rel="noopener" style="color:var(--green);font-weight:700;text-decoration:none;">direkt auf Facebook besuchen</a>.</p>
       </div>
       <div>
@@ -577,6 +609,35 @@
   </div>
 </section>
 
+<!-- BEWERTUNGEN -->
+<section id="bewertungen">
+  <div class="container">
+    <p class="section-label">Das sagen unsere Besucher</p>
+    <h2>Stimmen vom Hof</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars" aria-label="5 von 5 Sternen">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">Ein ganz tolles Erlebnis für unseren kleinen Sohn und uns!</p>
+        <div class="review-source"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>Google-Rezension</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars" aria-label="5 von 5 Sternen">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">Die Tiere sind unglaublich liebevoll, neugierig und bestens gepflegt.</p>
+        <div class="review-source"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>Google-Rezension</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars" aria-label="5 von 5 Sternen">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">Insgesamt eine sehr schöne Erfahrung und ein wunderbarer Ausflug.</p>
+        <div class="review-source"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>Google-Rezension</div>
+      </div>
+    </div>
+    <div class="reviews-cta">
+      <a href="https://maps.app.goo.gl/vrsDz7S4ePqLgFfF9" target="_blank" rel="noopener" class="btn-google"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Bewerten Sie uns auf Google</a>
+      <span class="reviews-cta-note">Waren Sie schon bei uns? Wir freuen uns über Ihre Bewertung!</span>
+    </div>
+  </div>
+</section>
+
 <!-- KONTAKT -->
 <section id="kontakt">
   <div class="container">
@@ -588,7 +649,7 @@
         <div class="kontakt-info">
           <div class="kontakt-item">
             <div class="kontakt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-            <div class="kontakt-item-text"><strong>Adresse</strong><a href="https://www.google.com/maps/search/?api=1&query=Beethovenstra%C3%9Fe+17%2C+15345+Altlandsberg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Rancho Cascada<br>Beethovenstraße 17<br>15345 Altlandsberg</a><br><span style="opacity:0.7;font-size:0.88rem;">Durch das Tor und bis zum Ende durchlaufen</span></div>
+            <div class="kontakt-item-text"><strong>Adresse</strong><a href="https://maps.app.goo.gl/vrsDz7S4ePqLgFfF9" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Rancho Cascada<br>Beethovenstraße 17<br>15345 Altlandsberg</a><br><span style="opacity:0.7;font-size:0.88rem;">Durch das Tor und bis zum Ende durchlaufen</span></div>
           </div>
           <div class="kontakt-item">
             <div class="kontakt-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
